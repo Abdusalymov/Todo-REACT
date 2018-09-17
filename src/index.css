@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'Roboto';
+  src:  url(./Roboto-Regular.ttf);
+}
+.cursor_style{
+	cursor: pointer;
+}
+body {
+	background-color: #ffde03;
+	font: 1rem 'Roboto', sans-serif;
+}
+.wrapper_todo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.wrapper_inner{
+	width: 100%;
+}
+.block_list {
+	max-width: 1300px;
+	width: 50%;
+	padding: 0 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	box-shadow: 1px 3px 4px -2px black;
+	background: #fff;
+	margin: 15px auto 0 auto;
+}
+.hedear_blockList{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 15px 0;
+	width: 100%;
+}
+
+.btn {
+	padding: 14px 28px;
+	font-size: 16px;
+	border-radius: 5px;
+}
+.btn_in_Block {
+	padding: 7px 14px;
+	margin-right: 10px;
+	background: #6200EE;
+	color: #FFF;
+	border: none;
+	box-shadow: 1px 1px 2px 0px black;
+}
+.name_task{
+	font-size: 1rem;
+	color: gold;
+}
+.open_close{
+	color: red;
+}
+.add_Main_Task {
+	width: 100%;
+}
+.warning {
+	border: 1px solid #6200EE;
+	color: #6200EE;
+	background: #ffde03;
+}
+.child {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	background: #fff;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+}
+input[type="checkbox"]{
+	border: red;
+	background: green;
+}
+.checkbox {
+	display: none;
+} 
+ .checkbox_custom {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	border: 2px solid #6200EE;
+	border-radius: 3px;
+}
+.checkbox_custom,
+.label {
+	display: inline-block;
+	vertical-align: middle;
+}
+.checkbox:checked+.checkbox_custom::before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	bottom: 2px;
+	left: 2px;
+	background: #6200EE;
+	border-radius: 2px;
+}
+.driver {
+	font-size: 1rem;
+}
+.add{
+	color:#6200EE;
+	cursor: pointer;
+}
+.remove{
+	color:red;
+	cursor: pointer;
+}
