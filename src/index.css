@@ -2,6 +2,7 @@
   font-family: 'Roboto';
   src:  url(./Roboto-Regular.ttf);
 }
+
 .cursor_style{
 	cursor: pointer;
 }
@@ -38,7 +39,7 @@ body {
 
 .btn {
 	padding: 14px 28px;
-	font-size: 16px;
+	font-size: 1rem;
 	border-radius: 5px;
 }
 .btn_in_Block {
@@ -52,6 +53,12 @@ body {
 .name_task{
 	font-size: 1rem;
 	color: gold;
+	text-align: center;
+}
+.name{
+	margin: 0 auto;
+	display: block;
+	width: 100%;
 }
 .open_close{
 	color: red;
@@ -59,7 +66,7 @@ body {
 .add_Main_Task {
 	width: 100%;
 }
-.warning {
+.btnAddingTask {
 	border: 1px solid #6200EE;
 	color: #6200EE;
 	background: #ffde03;
@@ -72,9 +79,8 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-input[type="checkbox"]{
-	border: red;
-	background: green;
+label{
+	color: #6200EE;
 }
 .checkbox {
 	display: none;
@@ -85,6 +91,7 @@ input[type="checkbox"]{
 	height: 20px;
 	border: 2px solid #6200EE;
 	border-radius: 3px;
+	margin-right: 5px;
 }
 .checkbox_custom,
 .label {
@@ -108,8 +115,39 @@ input[type="checkbox"]{
 .add{
 	color:#6200EE;
 	cursor: pointer;
+	margin-right: 5px;
 }
 .remove{
 	color:red;
 	cursor: pointer;
+}
+@media only screen and (max-width: 768px){
+	html{
+		font: 1.2rem 'Roboto', sans-serif;
+	}
+	input[type="text"]{
+		width: 80%;
+	}
+	.name_task{
+		text-align: center;
+	}
+	
+	.btnAddingTask{
+		margin: 0 auto;
+		display: block;
+	}
+	.hedear_blockList{
+		flex-direction: column;
+	}
+	.block_list{
+		width: 90%;
+	}
+	.btn_in_Block{
+		margin: 5px auto 0 auto;
+		display: block;
+		width: 100%;
+	}
+	.open_close{
+		margin-top: 10px;
+	}
 }

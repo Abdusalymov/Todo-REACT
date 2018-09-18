@@ -3,10 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class DropList extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {text: (<input type="text" data-id="item" onBlur={this.handleChange.bind(this)}/>)}
-  }
+	state = {text: (<input type="text" data-id="item" onBlur={this.handleChange.bind(this)}/>)}
   handleChange(e){
     let value = e.target.value;
     this.setState({text: value})
@@ -30,12 +27,9 @@ class DropList extends React.Component{
   }
 }
 class ElementList extends React.Component{
-  constructor(props){
-    super(props);
-		this.state = {text: (<input type="text"  onBlur={this.handleChange.bind(this)}/>),
+	state = {text: (<input type="text"  onBlur={this.handleChange.bind(this)}/>),
 			elem: []
-		}
-  }
+	}
   appChild(){
     const {elem} = this.state;
     this.setState({elem: elem.concat(elem.length)});
@@ -70,10 +64,7 @@ class ElementList extends React.Component{
   }
 }
 class TaskName extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {name: (<input type="text"  onBlur={this.handleChange.bind(this)}/>)}
-  }
+	state = {name: (<input type="text" className="name" onBlur={this.handleChange.bind(this)}/>)}
   handleChange(e){
     let value = e.target.value;
     this.setState({name: value})
@@ -86,21 +77,16 @@ class TaskName extends React.Component{
     )
   }
 }
-class HideWrapper extends React.Component{
-  render(){
-		const {elems, toggle} = this.props;
-    return(
-      <div className="hide">
-        {toggle && elems.length !== 0 && elems.map((item, index) => (<ElementList key={item} ident={index} remove={this.props.removeBlock}/>))}
-      </div>
-    )
-  }
+const HideWrapper = (props) =>{
+	const {elems, toggle, removeBlock} = props;
+	 return(
+		<div className="hide">
+			{toggle && elems.length !== 0 && elems.map((item, index) => (<ElementList key={item} ident={index} remove={removeBlock}/>))}
+		</div>
+	)
 }
 class Block extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {elems: [], toggleSwitch: true, toggleName: "CLOSE"};
-  }
+	state = {elems: [], toggleSwitch: true, toggleName: "CLOSE"};
   appChildBLock(){
     const {elems} = this.state;
     this.setState({elems: elems.concat(elems.length)});
@@ -128,19 +114,16 @@ class Block extends React.Component{
 						<button className="btn_in_Block btn cursor_style"  onClick={this.removeBlock.bind(this)}>REMOVE BLOCK</button>
 						<button className="btn_in_Block btn cursor_style"  onClick={this.appChildBLock.bind(this)}>ADD ITEM</button>
 					</div>
-					<TaskName/>
 					<span className="open_close cursor_style"  onClick={this.hideElementList.bind(this)}>{toggleName}</span>
 				</li>
+				<TaskName/>
         <HideWrapper elems={elems} removeBlock={this.removeChildBlock.bind(this)} toggle={toggleSwitch}/>
       </ul>
     )
   }
 }
 class Wrapper extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {elems: []};
-  }
+	state = {elems: []};
   appChildWrapper(){
     const {elems} = this.state;
     this.setState({elems: elems.concat(elems.length)});
@@ -155,7 +138,7 @@ class Wrapper extends React.Component{
     return(
       <div className="wrapper_inner">
         <div className="add_Main_Task">
-          <button id="main_task" className="btn warning cursor_style" onClick={this.appChildWrapper.bind(this)}>
+          <button id="main_task" className="btn btnAddingTask cursor_style" onClick={this.appChildWrapper.bind(this)}>
             ADD NEW TASK
           </button>
         </div>
@@ -166,13 +149,5 @@ class Wrapper extends React.Component{
     )
   }
 }
-class Todo extends React.Component{
-  render(){
-    return (
-      <div className="wrapper_todo">
-        <Wrapper/>
-      </div>
-    )
-  }
-}
+const Todo = ()=> <div className="wrapper_todo"><Wrapper/></div>
 ReactDOM.render(<Todo/>, document.getElementById('root'));
