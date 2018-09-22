@@ -86,16 +86,21 @@ class TaskName extends React.Component{
 }
 const HideWrapper = (props) =>{
 	const {elems, toggle, removeBlock} = props;
+	let style = {display: toggle};
 	 return(
-		<div className="hide">
-			{toggle && elems.length !== 0 && elems.map((item, index) => 
+		<div className="hide" style={style}>
+			{elems.length !== 0 && elems.map((item, index) => 
 				(<ElementList key={item} ident={index} remove={removeBlock}/>))
 			}
 		</div>
 	)
 }
 class Block extends React.Component{
-	state = {elems: [], toggleSwitch: true, toggleName: "CLOSE"};
+	state = {
+		elems: [], 
+		toggleSwitch: 'block', 
+		toggleName: "CLOSE"
+	};
   appChildBLock(){
     const {elems} = this.state;
     this.setState({elems: elems.concat(elems.length)});
@@ -110,7 +115,8 @@ class Block extends React.Component{
 	}
 	hideElementList(){
 		const {toggleSwitch, toggleName} = this.state;
-		this.setState({toggleSwitch: !toggleSwitch,
+		this.setState({
+			toggleSwitch: toggleSwitch === "block" ? "none" : "block",
 			toggleName: toggleName === "OPEN" ? "CLOSE" : "OPEN" 
 		})
 	}
